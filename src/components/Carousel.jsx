@@ -19,8 +19,6 @@ const images = [
   },
 ];
 
-
-
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
@@ -28,9 +26,7 @@ const Carousel = () => {
   const prevSlide = () => {
     setFade(false);
     setTimeout(() => {
-      setCurrentIndex((prev) =>
-        prev === 0 ? images.length - 1 : prev - 1
-      );
+      setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
       setFade(true);
     }, 300);
   };
@@ -38,14 +34,11 @@ const Carousel = () => {
   const nextSlide = () => {
     setFade(false);
     setTimeout(() => {
-      setCurrentIndex((prev) =>
-        prev === images.length - 1 ? 0 : prev + 1
-      );
+      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
       setFade(true);
     }, 300);
   };
 
-  // Auto-slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -64,12 +57,6 @@ const Carousel = () => {
         }`}
       />
 
-      {/* Caption */}
-      {/* <div className="absolute bottom-0  bg-opacity-50 text-white w-full text-center py-2 text-lg">
-        {images[currentIndex].caption}
-      </div> */}
-
-      {/* Prev Button */}
       <button
         onClick={prevSlide}
         aria-label="Previous Slide"
@@ -78,7 +65,6 @@ const Carousel = () => {
         ❮
       </button>
 
-      {/* Next Button */}
       <button
         onClick={nextSlide}
         aria-label="Next Slide"
@@ -87,7 +73,6 @@ const Carousel = () => {
         ❯
       </button>
 
-      {/* Dots */}
       <div className="absolute bottom-4 ml-[320px] transform -translate-x-1/2 flex gap-2 ">
         {images.map((_, index) => (
           <button
